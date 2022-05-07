@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="col-md-12">
+        <form [formGroup]="employeeForm" (ngSubmit)="onCreatePost()">
+
+            <div class="form-group">
+                <label>Title</label>
+                <input type="text" class="form-control" formControlName="title">
+                <div class="help-text" *ngIf="!employeeForm.get('title').valid && employeeForm.get('title').touched">Title is Required</div>
+            </div>
+
+            <div class="form-group">
+                <label>Content</label>
+                <textarea class="form-control" formControlName="content"></textarea>
+                <div class="help-text" *ngIf="!employeeForm.get('content').valid && employeeForm.get('content').touched">Content is Required</div>
+
+
+            </div>
+
+            <div>
+                <button class="btn btn-primary" type="submit">ADD</button>
+            </div>
+
+        </form>
+    </div>
+
+    <div>
+        <a href="#" (click)="deletePosts($event)">Clear all Posts</a>
+    </div>
+
+    <div>
+        <table class="table" *ngIf="!error">
+            <thead>
+                <th>Title</th>
+                <th>Content</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let post of posts">
+                    <td>{{post.title}}</td>
+                    <td>{{post.content}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div *ngIf="error">
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Not Allowed</strong> Permission Required
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+</div>

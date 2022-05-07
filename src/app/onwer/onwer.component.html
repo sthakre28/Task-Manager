@@ -1,0 +1,90 @@
+<div class="card mt-5 col-md-6">
+    <form [formGroup]="userForm" (ngSubmit)="onCreateUser()">
+        <div class="card-header">
+            <h4>User Details</h4>
+        </div>
+        <div class="card-body">
+            <div class="form-group row col-12">
+                <div class="col-4 ">
+                    <label for="firstName" class="col-form-label">First Name</label>
+                </div>
+                <div class="col-8">
+                    <input type="text" id="firstName" class="form-control" placeholder="First Name" formControlName="firstName">
+                </div>
+            </div>
+
+            <div class="form-group row col-12">
+                <div class="col-4">
+                    <label for="lastName" class="col-form-label">Last Name</label>
+                </div>
+                <div class="col-8">
+                    <input type="text" id="lastName" class="form-control" placeholder="Last Name" formControlName="lastName">
+                </div>
+            </div>
+
+            <div class="form-group row col-12">
+                <div class="col-4">
+                    <label for="mobile" class="col-form-label">Mobile</label>
+                </div>
+                <div class="col-8">
+                    <input type="number" id="mobile" class="form-control" placeholder="Mobile Number" maxlength="10" formControlName="mobile">
+                </div>
+            </div>
+
+        </div>
+        <div class="card-footer">
+            <div class="form-inline">
+                <button type="submit" class="btn btn-lg btn-primary">Save</button>
+                <button type="button" class="btn btn-secondary btn-lg" (click)="resetForm()">Reset</button>
+            </div>
+
+        </div>
+
+    </form>
+</div>
+
+
+<div>
+    <table class="table">
+        <thead>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">mobile</th>
+            <th>Action</th>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let user of users">
+                <td>{{user.firstName}}</td>
+                <td>{{user.lastName}}</td>
+                <td>{{user.mobile}}</td>
+                <!-- <td><button (click)="deleteUsers(user)">Delete</button></td> -->
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+
+<<!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+  </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
